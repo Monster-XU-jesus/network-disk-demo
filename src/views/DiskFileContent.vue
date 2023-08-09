@@ -47,7 +47,13 @@
     </section>
   </header>
   <section class="main-area">
-    <div class="app-item" v-for="(item, index) of fileInfo" :key="index">
+    <div
+      class="app-item"
+      v-for="(item, index) of fileInfos"
+      :key="index"
+      :class="{ clicked: item.isClicked }"
+      @click="chageCheched(item)"
+    >
       <label class="checkbox-style">
         <span class="checkbox-inner"></span>
         <input type="checkbox" class="checkbox-input" @click="hello" />
@@ -82,33 +88,44 @@ import { ref, reactive } from "vue";
 
 let searchFile = ref("");
 let iconSize = 30; // 图标大小
-let fileInfo = reactive([
+let isClicked = ref(false); // 文件是否选中
+let fileInfos = reactive([
   {
     title: "java从入门到入土111111",
     type: "Pdf",
+    cilcked: false,
   },
-  { title: "电影全集", type: "Rar" },
+  { title: "电影全集", type: "Rar", cilcked: false },
   {
-    title: "java从入门到入土",
+    title: "java从入门到入土111111",
     type: "Pdf",
+    cilcked: false,
   },
-  { title: "电影全集", type: "Rar" },
+  { title: "电影全集", type: "Rar", cilcked: false },
   {
-    title: "java从入门到入土",
+    title: "java从入门到入土111111",
     type: "Pdf",
+    cilcked: false,
   },
-  { title: "电影全集", type: "Rar" },
+  { title: "电影全集", type: "Rar", cilcked: false },
   {
-    title: "java从入门到入土",
+    title: "java从入门到入土111111",
     type: "Pdf",
+    cilcked: false,
   },
-  { title: "电影全集", type: "Rar" },
+  { title: "电影全集", type: "Rar", cilcked: false },
   {
-    title: "java从入门到入土",
+    title: "java从入门到入土111111",
     type: "Pdf",
+    cilcked: false,
   },
-  { title: "电影全集", type: "Rar" },
+  { title: "电影全集", type: "Rar", cilcked: false },
 ]);
+
+// 改变文件选中状态
+const chageCheched = (fileInfo) => {
+  fileInfo.isClicked = !fileInfo.isClicked;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -162,6 +179,7 @@ let fileInfo = reactive([
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  padding-top: 20px;
 
   .app-item {
     position: relative;
@@ -189,14 +207,6 @@ let fileInfo = reactive([
       height: 16px;
       cursor: pointer;
       border: 2px solid rgba(0, 0, 0, 0.1);
-
-      // .checkbox-inner::after {
-      //   content: "";
-      //   display: table;
-      //   width: 16px;
-      //   height: 16px;
-      //   border: 1px solid rgba(0, 0, 0, 0.1);
-      // }
 
       .checkbox-input {
         width: 100%;
@@ -234,6 +244,15 @@ let fileInfo = reactive([
         // padding: 0 10px;
         text-align: center;
       }
+    }
+  }
+  .clicked {
+    background-color: rgba(51, 136, 255, 0.1);
+    border: 1px solid rgba(51, 136, 255, 0.3);
+
+    &:hover {
+      background-color: rgba(51, 136, 255, 0.1);
+      border: 1px solid rgba(51, 136, 255, 0.3);
     }
   }
 }
