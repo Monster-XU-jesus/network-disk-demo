@@ -168,7 +168,7 @@ let fileInfo = reactive([
     width: 130px;
     height: 130px;
     border-radius: 8px;
-    border: 1px solid black;
+    // border: 1px solid black;
     margin-bottom: 10px;
     margin-right: 15px;
     margin-left: 20px;
@@ -178,7 +178,7 @@ let fileInfo = reactive([
     }
 
     &:nth-child(7n + 1) {
-      margin-left: 0px;
+      margin-left: 25px;
     }
 
     .checkbox-style {
@@ -228,8 +228,11 @@ let fileInfo = reactive([
         margin: 0 auto;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
-        padding: 0 7px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-line-clamp: vertical;
+        // padding: 0 10px;
+        text-align: center;
       }
     }
   }
