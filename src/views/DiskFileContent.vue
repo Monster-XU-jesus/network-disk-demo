@@ -48,13 +48,22 @@
   </header>
   <section class="main-area">
     <div class="app-item" v-for="(item, index) of fileInfo" :key="index">
-      {{ item.title }}
-      <label class="checkbox-style" for="tac">
+      <label class="checkbox-style">
         <span class="checkbox-inner"></span>
-        <input type="checkbox" class="checkbox-input" id="tac" />
+        <input type="checkbox" class="checkbox-input" @click="hello" />
       </label>
-      <div class="icon-area">icon</div>
-      <div class="name-area">name</div>
+      <div class="icon-area">
+        <!-- <img :src="'../assets/img/disk/' + item.type + 'Type.png'" /> -->
+        <!-- <img src="../assets/img/disk/PdfType.png" /> -->
+        <!-- <img :src="require('../assets/img/disk/' + item.type + 'Type.png')" /> -->
+        <img
+          class="img-style"
+          :src="require('../assets/img/disk/' + item.type + 'Type.png')"
+        />
+      </div>
+      <div class="name-area">
+        <div class="name-title">{{ item.title }}</div>
+      </div>
     </div>
   </section>
 </template>
@@ -74,20 +83,31 @@ import { ref, reactive } from "vue";
 let searchFile = ref("");
 let iconSize = 30; // 图标大小
 let fileInfo = reactive([
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
-  { title: "java从入门到入土", type: "pdf" },
-  { title: "电影全集", type: "zip" },
+  {
+    title: "java从入门到入土111111",
+    type: "Pdf",
+  },
+  { title: "电影全集", type: "Rar" },
+  {
+    title: "java从入门到入土",
+    type: "Pdf",
+  },
+  { title: "电影全集", type: "Rar" },
+  {
+    title: "java从入门到入土",
+    type: "Pdf",
+  },
+  { title: "电影全集", type: "Rar" },
+  {
+    title: "java从入门到入土",
+    type: "Pdf",
+  },
+  { title: "电影全集", type: "Rar" },
+  {
+    title: "java从入门到入土",
+    type: "Pdf",
+  },
+  { title: "电影全集", type: "Rar" },
 ]);
 </script>
 
@@ -165,19 +185,51 @@ let fileInfo = reactive([
       position: absolute;
       left: 5px;
       top: 5px;
+      width: 16px;
+      height: 16px;
       cursor: pointer;
+      border: 2px solid rgba(0, 0, 0, 0.1);
 
-      .checkbox-inner::after {
-        content: "";
-        display: table;
-        width: 16px;
-        height: 16px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-      }
+      // .checkbox-inner::after {
+      //   content: "";
+      //   display: table;
+      //   width: 16px;
+      //   height: 16px;
+      //   border: 1px solid rgba(0, 0, 0, 0.1);
+      // }
 
       .checkbox-input {
         width: 100%;
         height: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .icon-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 62px;
+      margin-top: 15px;
+
+      .img-style {
+        max-width: 62px;
+        min-width: 62px;
+        max-height: 100%;
+      }
+    }
+    .name-area {
+      height: 40px;
+      display: flex;
+      align-items: flex-start;
+      margin-top: 8px;
+
+      .name-title {
+        margin: 0 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 7px;
       }
     }
   }
